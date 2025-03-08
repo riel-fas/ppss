@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_func_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 16:29:49 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/08 10:02:01 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/08 10:32:33 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node) //Defi
 	current_index(*b);
 }
 
-static void	rev_rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node) //Define a function that rotates both the bottom `a` and `b` nodes to the top of their stacks, if it's the cheapest move
+static void	rev_rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node)
 {
 	while (*b != cheapest_node->target_node && *a != cheapest_node) //As long as the current `b` node is not `a` cheapest node's target node && and the current `a` node is not the cheapest
 	rrr(a, b, false); //Reverse rotate both `a` and `b` nodes
@@ -28,7 +28,7 @@ static void	rev_rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node) //
 	current_index(*b);
 }
 
-static void	move_a_to_b(t_stack **a, t_stack **b) //Define a function that prepares the cheapest nodes on top of the stacks for pushing `a` nodes to stack `b`, until there are three nodes left in `a`
+static void	move_a_to_b(t_stack **a, t_stack **b)
 {
 	t_stack	*cheapest_node; //To store the pointer to the cheapest `a` node
 
@@ -42,13 +42,14 @@ static void	move_a_to_b(t_stack **a, t_stack **b) //Define a function that prepa
 	pb(b, a, false);
 }
 
-static void	move_b_to_a(t_stack **a, t_stack **b) //Define a function that prepares `b`'s target `a` nodes for pushing all `b` nodes back to stack `a`
+static void	move_b_to_a(t_stack **a, t_stack **b)
 {
 	prep_for_push(a, (*b)->target_node, 'a'); //Ensure `b`'s target `a` node is on top of the stack
 	pa(a, b, false);
 }
 
-static void	min_on_top(t_stack **a) //Define a function that moves the smallest number to the top
+
+static void	min_on_top(t_stack **a)
 {
 	while ((*a)->nbr != find_min(*a)->nbr) //As long as the smallest number is not at the top
 	{
@@ -56,7 +57,9 @@ static void	min_on_top(t_stack **a) //Define a function that moves the smallest 
 		ra(a, false);
 	else
 		rra(a, false);
+	}
 }
+
 
 void	sort_A_B(t_stack **a, t_stack **b)
 {
@@ -87,13 +90,4 @@ void	sort_A_B(t_stack **a, t_stack **b)
 	}
 	current_index(*a); // Update node positions in `a`
 	min_on_top(a);     // Ensure the smallest number is at the top of `a`
-}
-
-
-
-
-
-
-
-
 }

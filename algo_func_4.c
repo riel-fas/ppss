@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   algo_func_4.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:05:28 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/08 10:06:37 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/08 10:35:35 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	set_target_b(t_stack_node *a, t_stack_node *b) //Define a function that sets for the current `a` node, its target node from stack `a`
+static void	set_target_b(t_stack *a, t_stack *b) //Define a function that sets for the current `a` node, its target node from stack `a`
 {
-	t_stack_node	*current_a; //To store the pointer to the current `a` node
-	t_stack_node	*target_node; //To store the pointer of the target node for `b` node
+	t_stack	*current_a; //To store the pointer to the current `a` node
+	t_stack	*target_node; //To store the pointer of the target node for `b` node
 	long			best_match_index; //To store the "closest bigger" number so far
 
 	while (b)
@@ -40,7 +40,7 @@ static void	set_target_b(t_stack_node *a, t_stack_node *b) //Define a function t
 	}
 }
 
-void	init_nodes_b(t_stack_node *a, t_stack_node *b) //Define a function that prepares the nodes for pushing `b` to `a`
+void	init_nodes_b(t_stack *a, t_stack *b) //Define a function that prepares the nodes for pushing `b` to `a`
 {
 	current_index(a);
 	current_index(b);

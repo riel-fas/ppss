@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   algo_func_3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 16:42:35 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/08 10:05:52 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/08 10:34:07 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	current_index(t_stack_node *stack)
+void	current_index(t_stack *stack)
 {
 	int	i; //To store the index of the current node
 	int	median; //To store the position of the median of the stack
@@ -33,10 +33,10 @@ void	current_index(t_stack_node *stack)
 	}
 }
 
-static void	set_target_a(t_stack_node *a, t_stack_node *b)//Find `a` node's target in stack `b`
+static void	set_target_a(t_stack *a, t_stack *b)//Find `a` node's target in stack `b`
 {
-	t_stack_node	*current_b; //To store the pointer to the current node in stack `b` and iterate through each node following
-	t_stack_node	*target_node; //To store the pointer to the target node in stack `b`
+	t_stack	*current_b; //To store the pointer to the current node in stack `b` and iterate through each node following
+	t_stack	*target_node; //To store the pointer to the target node in stack `b`
 	long			best_match_index; //In this case, the best match indexe stores the value of the "closest smaller number" so far
 
 	while (a) //As long as we have nodes in stack `a`
@@ -61,7 +61,7 @@ static void	set_target_a(t_stack_node *a, t_stack_node *b)//Find `a` node's targ
 	}
 }
 
-static void	cost_analysis_a(t_stack_node *a, t_stack_node *b) //Define a functio that analyses the cost of the `a` node along with it's target `b` node, which is the sum of the number of instructions for both the nodes to rotate to the top of their stacks
+static void	cost_analysis_a(t_stack *a, t_stack *b) //Define a functio that analyses the cost of the `a` node along with it's target `b` node, which is the sum of the number of instructions for both the nodes to rotate to the top of their stacks
 {
 	int	len_a; //To store the length of stack `a`
 	int	len_b; //To store the length of stack `b`
@@ -81,10 +81,10 @@ static void	cost_analysis_a(t_stack_node *a, t_stack_node *b) //Define a functio
 	}
 }
 
-void	set_cheapest(t_stack_node *stack) //Define a function that sets a node's `cheapest` attribute as `true` or `false`
+void	set_cheapest(t_stack *stack) //Define a function that sets a node's `cheapest` attribute as `true` or `false`
 {
 	long			cheapest_value; //To store the value of the cheapest node so far
-	t_stack_node	*cheapest_node; //To store a pointer to the cheapest node so far
+	t_stack	*cheapest_node; //To store a pointer to the cheapest node so far
 
 	if (!stack) //Check for an empty stack
 		return ;
@@ -98,10 +98,10 @@ void	set_cheapest(t_stack_node *stack) //Define a function that sets a node's `c
 		}
 		stack = stack->next; //Move to the next node for comparison
 	}
-	cheapest_node->cheapest = true; //After iterating through the stack, if no cheaper node is found than the current, then set the cheapest node's `cheapest` attribut to `true` in the data structure
+	cheapest_node->cheap = true; //After iterating through the stack, if no cheaper node is found than the current, then set the cheapest node's `cheapest` attribut to `true` in the data structure
 }
 
-void	init_nodes_a(t_stack_node *a, t_stack_node *b) //Define a function that combines all the functions needed to prepare stack `a`, ready for our pushing and sorting. These functions set the data inside the node's structure
+void	init_nodes_a(t_stack *a, t_stack *b) //Define a function that combines all the functions needed to prepare stack `a`, ready for our pushing and sorting. These functions set the data inside the node's structure
 {
 	current_index(a);
 	current_index(b);
