@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_func_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 16:29:49 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/08 10:32:33 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/08 16:55:36 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,33 +61,78 @@ static void	min_on_top(t_stack **a)
 }
 
 
-void	sort_A_B(t_stack **a, t_stack **b)
-{
-	int len_a = stack_len(*a); // Get the length of stack `a`
-	int count = 0; // Counter to track how many nodes have been processed
+// void	sort_A_B(t_stack **a, t_stack **b)
+// {
+// 	int len_a = stack_length(*a); // Get the length of stack `a`
+// 	int count = 0; // Counter to track how many nodes have been processed
 
-	if (len_a > 3 && !stack_sorted(*a))
+// 	if (len_a > 3 && !stack_sorted(*a))
+// 	{
+// 		pb(b, a, false); // Move one node from `a` to `b`
+// 		count++; // Increment the counter
+// 	}
+// 	if (len_a - count > 3 && !stack_sorted(*a))
+// 	{
+// 		pb(b, a, false); // Move another node from `a` to `b`
+// 		count++; // Increment the counter
+// 	}
+// 	while (len_a - count > 3 && !stack_sorted(*a))
+// 	{
+// 		init_nodes_a(*a, *b); // Prepare nodes for sorting
+// 		move_a_to_b(a, b);    // Move nodes from `a` to `b`
+// 		count++; // Increment the counter
+// 	}
+// 	sort_the_three(a); // Sort the remaining 3 nodes in `a`
+// 	while (*b)
+// 	{
+// 		init_nodes_b(*a, *b); // Prepare nodes for sorting
+// 		move_b_to_a(a, b);    // Move nodes from `b` to `a`
+// 	}
+// 	current_index(*a); // Update node positions in `a`
+// 	min_on_top(a);     // Ensure the smallest number is at the top of `a`
+// }
+
+void	sort_A_B(t_stack **a, t_stack **b) //Define a function that sorts stack `a` if it has more than 3 nodes
+{
+	int	len_a; //To store the length of stack `a`
+
+	len_a = stack_length(*a);
+	if (len_a-- > 3 && !stack_sorted(*a)) //If stack `a` has more than three nodes and aren't sorted
+		pb(b, a, false);
+	if (len_a-- > 3 && !stack_sorted(*a)) //If stack `a` still has more than three nodes and aren't sorted
+		pb(b, a, false);
+	while (len_a-- > 3 && !stack_sorted(*a)) //If stack `a` still has more than three nodes and aren't sorted
 	{
-		pb(b, a, false); // Move one node from `a` to `b`
-		count++; // Increment the counter
+		init_nodes_a(*a, *b); //Iniate all nodes from both stacks
+		move_a_to_b(a, b); //Move the cheapest `a` nodes into a sorted stack `b`, until three nodes are left in stack `a`
 	}
-	if (len_a - count > 3 && !stack_sorted(*a))
+	sort_the_three(a);
+	while (*b) //Until the end of stack `b` is reached
 	{
-		pb(b, a, false); // Move another node from `a` to `b`
-		count++; // Increment the counter
+		init_nodes_b(*a, *b); //Initiate all nodes from both stacks
+		move_b_to_a(a, b); //Move all `b` nodes back to a sorted stack `a`
 	}
-	while (len_a - count > 3 && !stack_sorted(*a))
+	current_index(*a); //Refresh the current position of stack `a`
+	min_on_top(a); //Ensure smallest number is on top
+}
+
+void	prep_for_push(t_stack **stack, t_stack *top_node, char stack_name) //Define a function that moves the required node to the top of the stack
+{
+	while (*stack != top_node) //Check if the required node is not already the first node
 	{
-		init_nodes_a(*a, *b); // Prepare nodes for sorting
-		move_a_to_b(a, b);    // Move nodes from `a` to `b`
-		count++; // Increment the counter
+		if (stack_name == 'a') //If not, and it is stack `a`, execute the following
+		{
+			if (top_node->above_median)
+				ra(stack, false);
+			else
+				rra(stack, false);
+		}
+		else if (stack_name == 'b') //If not, and it is stack `b`, execute the following
+		{
+			if (top_node->above_median)
+				rb(stack, false);
+			else
+				rrb(stack, false);
+		}
 	}
-	sort_three(a); // Sort the remaining 3 nodes in `a`
-	while (*b)
-	{
-		init_nodes_b(*a, *b); // Prepare nodes for sorting
-		move_b_to_a(a, b);    // Move nodes from `b` to `a`
-	}
-	current_index(*a); // Update node positions in `a`
-	min_on_top(a);     // Ensure the smallest number is at the top of `a`
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:10:05 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/08 10:44:31 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/08 16:28:13 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_stack
 // Error handling
 void		errors(void);
 void		free_stack(t_stack **stack);
-int			error_dups(t_stack **a, int n);
+int			error_dups(t_stack *a, int n);
 int			error_synt(char *str);
 
 // Stack operations
@@ -72,11 +72,13 @@ t_stack		*get_cheapest(t_stack *stack);
 void		move_to_top(t_stack **stack, t_stack *target);
 void		init_nodes_a(t_stack *a, t_stack *b);
 void		init_nodes_b(t_stack *a, t_stack *b);
+void		prep_for_push(t_stack **stack, t_stack *top_node, char stack_name);
 
 // Input parsing
-char	**split(char *s, char c);
-long	atoi_v2(char *av);
-
+char		**split(char *s, char c);
+long		atoi_v2(char *av);
+char		*get_next_word(char *s, char c);
+int			count_words(char *s, char c);
 
 
 

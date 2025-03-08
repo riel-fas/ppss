@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 13:19:28 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/06 16:39:28 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/08 16:32:25 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_stack(t_stack **stack)
-{
-	t_stack *tmp;
+// void	free_stack(t_stack **stack)
+// {
+// 	t_stack *tmp;
 
-	while (*stack)
-	{
-		tmp = *stack;
-		*stack = (*stack)->next;
-		free(tmp);
-	}
-}
+// 	while (*stack)
+// 	{
+// 		tmp = *stack;
+// 		*stack = (*stack)->next;
+// 		free(tmp);
+// 	}
+// }
 
 void free_args(char **args)
 {
@@ -49,15 +49,15 @@ bool stack_sort_check(t_stack *stack)
     return true;
 }
 
-int	stack_length(t_stack *stack)
-{
-	int x;
+// int	stack_length(t_stack *stack)
+// {
+// 	int x;
 
-	x = 0;
-	while (stack)//fixed???
-	{
-		x++;
-		stack = stack->next;
-	}
-	return (x);
-}
+// 	x = 0;
+// 	while (stack)//fixed???
+// 	{
+// 		x++;
+// 		stack = stack->next;
+// 	}
+// 	return (x);
+// }

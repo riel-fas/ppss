@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_in_it.c                                      :+:      :+:    :+:   */
+/*   populate_a.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 12:53:15 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/08 08:40:11 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/08 16:44:05 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,23 @@ static void send_nodes_to_a(t_stack **stack, int n)
 	}
 	else
 	{
-		find_last(*stack)->next = node;
+		last_node = find_last(*stack);
 		last_node->next = node;
 		node->prev = last_node;
 	}
+}
+
+t_stack	*get_cheapest(t_stack *stack) //Define a function that searches for the cheapest node, that is set by bool
+{
+	if (!stack)
+		return (NULL);
+	while (stack)
+	{
+		if (stack->cheap)
+			return (stack);
+		stack = stack->next;
+	}
+	return (NULL);
 }
 
 // Initialize stack A
@@ -65,7 +78,7 @@ void	populate_stack_a(t_stack **a, char **av, int start_index)
 			free_stack(a);
 			errors();
 		}
-		send_nodes_to_a(*a, (int)n);//from long to int
-        i++;
-    }
+		send_nodes_to_a(a, (int)n);//from long to int
+		i++;
+	}
 }

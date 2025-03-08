@@ -3,16 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   algo_func_4.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 10:05:28 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/08 10:35:35 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/08 16:30:45 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	set_target_b(t_stack *a, t_stack *b) //Define a function that sets for the current `a` node, its target node from stack `a`
+void	init_nodes_b(t_stack *a, t_stack *b) //Define a function that prepares the nodes for pushing `b` to `a`
+{
+	current_index(a);
+	current_index(b);
+	set_target_b(a, b);
+}
+
+void	set_target_b(t_stack *a, t_stack *b) //Define a function that sets for the current `a` node, its target node from stack `a`
 {
 	t_stack	*current_a; //To store the pointer to the current `a` node
 	t_stack	*target_node; //To store the pointer of the target node for `b` node
@@ -40,9 +47,3 @@ static void	set_target_b(t_stack *a, t_stack *b) //Define a function that sets f
 	}
 }
 
-void	init_nodes_b(t_stack *a, t_stack *b) //Define a function that prepares the nodes for pushing `b` to `a`
-{
-	current_index(a);
-	current_index(b);
-	set_target_b(a, b);
-}

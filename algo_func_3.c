@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_func_3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 16:42:35 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/08 10:34:07 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/08 16:29:28 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	current_index(t_stack *stack)
 	i = 0; //The first index is `0`
 	if (!stack) //Check for am empty stack
 		return ;
-	median = stack_len(stack) / 2; //Calculate the median by dividing the length of a stack by 2
+	median = stack_length(stack) / 2; //Calculate the median by dividing the length of a stack by 2
 	while (stack) //Loop through all the nodes until the end of the stack is reached
 	{
 		stack->index = i; //Assign the current index value to the current node
@@ -66,8 +66,8 @@ static void	cost_analysis_a(t_stack *a, t_stack *b) //Define a functio that anal
 	int	len_a; //To store the length of stack `a`
 	int	len_b; //To store the length of stack `b`
 
-	len_a = stack_len(a);
-	len_b = stack_len(b);
+	len_a = stack_length(a);
+	len_b = stack_length(b);
 	while (a) //Loop through each node until the end of the stack is reached
 	{
 		a->push_cost = a->index; //Assign the current `a` node's push cost, its' index value
