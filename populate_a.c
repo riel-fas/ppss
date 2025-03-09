@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   populate_a.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 12:53:15 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/09 08:36:27 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/09 13:55:23 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ t_stack	*get_cheapest(t_stack *stack)
 	return (NULL);
 }
 
-void	populate_stack_a(t_stack **a, char **av, int start_index)
+void	populate_stack_a(t_stack **a, char **av)
 {
 	long n;
-	int i = start_index;
+	int i = 0;
 
 	while (av[i])
 	{

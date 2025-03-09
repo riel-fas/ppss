@@ -1,6 +1,10 @@
+NAME = push_swap
+
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -fsanitize=address
+
+LIBFT = libft/libft.a
 
 SRCS =	string_pars.c \
 		stack_utils_1.c \
@@ -19,22 +23,27 @@ SRCS =	string_pars.c \
 
 OBJS = $(SRCS:.c=.o)
 
-NAME = push_swap
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(DEBUG) $(OBJS) -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+
+$(LIBFT):
+	make -C libft
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(DEBUG) -c $< -o $@
 
 clean:
 	rm -f $(OBJS)
+	make clean -C libft
 
 fclean: clean
 	rm -f $(NAME)
+	make fclean -C libft
 
 re: fclean all
 
 .PHONY: all clean fclean re
+

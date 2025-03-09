@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:10:05 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/09 09:24:13 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/09 14:16:13 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+#include "libft/libft.h"
 #include <stdbool.h>
 #include <stdlib.h>
 #include <limits.h>
@@ -59,7 +60,7 @@ t_stack		*find_max(t_stack *stack);
 bool		stack_sorted(t_stack *stack);
 
 // Sorting algorithms
-void		populate_stack_a(t_stack **a, char **av, int start_index);
+void		populate_stack_a(t_stack **a, char **av);
 void		sort_the_three(t_stack **a);
 void		sort_A_B(t_stack **a, t_stack **b);
 
