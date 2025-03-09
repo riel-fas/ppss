@@ -6,13 +6,13 @@
 /*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 06:08:45 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/08 06:32:02 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/09 08:38:34 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	rotate(t_stack **stack) //Define a function that rotates the stack's top node to the bottom of the stack
+static void	rotate(t_stack **stack)
 {
 	t_stack	*last_node;
 
@@ -26,21 +26,21 @@ static void	rotate(t_stack **stack) //Define a function that rotates the stack's
 	last_node->next->next = NULL;
 }
 
-void	ra(t_stack **a, bool write_mv) //Rotate the top `a` node to the bottom of the stack, and write_mv the instruction
+void	ra(t_stack **a, bool write_mv)
 {
 	rotate(a);
 	if (!write_mv)
 		write(1, "ra\n", 3);
 }
 
-void	rb(t_stack **b, bool write_mv) //Rotate the top `b` node to the bottom of the stack, and write_mv the instruction
+void	rb(t_stack **b, bool write_mv)
 {
 	rotate(b);
 	if (!write_mv)
 		write(1, "rb\n", 3);
 }
 
-void	rr(t_stack **a, t_stack **b, bool write_mv) //Stimultaneously rotate both the top `a` and `b` nodes to the bottom of the stack, and write_mv the instruction
+void	rr(t_stack **a, t_stack **b, bool write_mv)
 {
 	rotate(a);
 	rotate(b);

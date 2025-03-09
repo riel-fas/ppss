@@ -6,13 +6,12 @@
 /*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 13:41:31 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/07 13:41:32 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/09 08:47:46 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Count the number of words in a string
 int count_words(char *s, char c)
 {
     int count = 0;
@@ -32,7 +31,6 @@ int count_words(char *s, char c)
     return count;
 }
 
-// Get the next word from the string
 char *get_next_word(char *s, char c)
 {
     static int cursor = 0;

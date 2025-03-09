@@ -6,7 +6,7 @@
 /*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:10:05 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/08 16:28:13 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/09 09:24:13 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@
 // Stack node structure
 typedef struct s_stack
 {
-    int nbr;                // Value stored in the node
-    struct s_stack *prev;   // Pointer to the previous node
-    struct s_stack *next;   // Pointer to the next node
-    int index;              // Index of the node in the stack
-    bool above_median;      // Whether the node is above the median
-    int push_cost;          // Cost to push the node to the correct position
-    bool cheap;          // Whether the node is the cheapest to push
-    struct s_stack *target_node; // Pointer to the target node in stack A
+	int				nbr;
+	struct s_stack	*prev;
+	struct s_stack	*next;
+	int				index;              // Index of the node in the stack
+	bool			above_median;      // Whether the node is above the median
+	int				push_cost;          // Cost to push the node to the correct position
+	bool			cheap;          // Whether the node is the cheapest to push
+	struct s_stack	*target_node; // Pointer to the target node in stack A
 } t_stack;
 
 // Error handling
@@ -76,10 +76,7 @@ void		prep_for_push(t_stack **stack, t_stack *top_node, char stack_name);
 
 // Input parsing
 char		**split(char *s, char c);
-long		atoi_v2(char *av);
-char		*get_next_word(char *s, char c);
-int			count_words(char *s, char c);
-
+long		atoi_v2(const char *av);
 
 
 

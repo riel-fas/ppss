@@ -6,42 +6,39 @@
 /*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 12:53:15 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/08 16:44:05 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/09 08:36:27 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Append a node to the stack
 static void send_nodes_to_a(t_stack **stack, int n)
 {
-	t_stack *node;
-	t_stack *last_node;
+	t_stack	*node; //To store a pointer to the new node to be created with the value `n`
+	t_stack	*last_node; //To store a pointer to the current last node of the stack
 
 	if (!stack)
 		return ;
-
 	node = malloc(sizeof(t_stack));
 	if (!node)
-		return;
-	node->nbr = n;
+		return ;
 	node->next = NULL;
+	node->nbr = n;
 	node->cheap = 0;
-	// node->prev = find_last(*stack);
-	if (!*stack)
+	if (!(*stack))
 	{
 		*stack = node;
 		node->prev = NULL;
 	}
 	else
 	{
-		last_node = find_last(*stack);
-		last_node->next = node;
-		node->prev = last_node;
+		last_node = find_last(*stack); //In which case, find the last node
+		last_node->next = node; //Append the new node to the last node
+		node->prev = last_node; //Update the previous pointer of the new node and complete the appending
 	}
 }
 
-t_stack	*get_cheapest(t_stack *stack) //Define a function that searches for the cheapest node, that is set by bool
+t_stack	*get_cheapest(t_stack *stack)
 {
 	if (!stack)
 		return (NULL);
@@ -54,7 +51,6 @@ t_stack	*get_cheapest(t_stack *stack) //Define a function that searches for the 
 	return (NULL);
 }
 
-// Initialize stack A
 void	populate_stack_a(t_stack **a, char **av, int start_index)
 {
 	long n;

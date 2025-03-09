@@ -6,7 +6,7 @@
 /*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 06:11:34 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/08 06:31:47 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/09 08:38:52 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,21 @@ static void	swap(t_stack **head)
 	(*head)->prev = NULL;
 }
 
-void	sa(t_stack	**a, bool write_mv) //Swap the first two nodes of stack `a` and write_mv the instruction
+void	sa(t_stack	**a, bool write_mv)
 {
 	swap(a);
 	if (!write_mv)
 		write(1, "sa\n", 3);
 }
 
-void	sb(t_stack **b, bool write_mv) //Swap the first two nodes of stack `b` and write_mv the instruction
+void	sb(t_stack **b, bool write_mv)
 {
 	swap(b);
 	if (!write_mv)
 		write(1, "sb\n", 3);
 }
 
-void	ss(t_stack **a, t_stack **b, bool write_mv) //Stimutaneously swap the first two nodes of the stack and write_mv the instruction
+void	ss(t_stack **a, t_stack **b, bool write_mv)
 {
 	swap(a);
 	swap(b);

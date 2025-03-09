@@ -6,25 +6,25 @@
 /*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 16:29:49 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/08 16:55:36 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/09 09:39:35 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node) //Define a function that rotates both the top `a` and `b` nodes to the bottom of their stacks, if it's the cheapest move
+static void	rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node)
 {
-	while (*b != cheapest_node->target_node && *a != cheapest_node) //As long as the current `b` node is not `a` cheapest node's target node, and the current top `a` node is not the top node
-	rr(a, b, false); //Rotate both `a` and `b` nodes
+	while (*b != cheapest_node->target_node && *a != cheapest_node)
+		rr(a, b, false); //Rotate both `a` and `b` nodes
 	current_index(*a);
 	current_index(*b);
 }
 
 static void	rev_rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node)
 {
-	while (*b != cheapest_node->target_node && *a != cheapest_node) //As long as the current `b` node is not `a` cheapest node's target node && and the current `a` node is not the cheapest
-	rrr(a, b, false); //Reverse rotate both `a` and `b` nodes
-	current_index(*a); //Refresh current node positions
+	while (*b != cheapest_node->target_node && *a != cheapest_node)
+		rrr(a, b, false);
+	current_index(*a);
 	current_index(*b);
 }
 
@@ -53,10 +53,10 @@ static void	min_on_top(t_stack **a)
 {
 	while ((*a)->nbr != find_min(*a)->nbr) //As long as the smallest number is not at the top
 	{
-	if (find_min(*a)->above_median) //Rotate or reverse rotate according to the position of the node on the median
-		ra(a, false);
-	else
-		rra(a, false);
+		if (find_min(*a)->above_median) //Rotate or reverse rotate according to the position of the node on the median
+			ra(a, false);
+		else
+			rra(a, false);
 	}
 }
 
