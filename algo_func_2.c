@@ -6,7 +6,7 @@
 /*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 16:29:49 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/09 10:21:50 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/09 12:25:04 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,65 +59,65 @@ static void	min_on_top(t_stack **a)
 	}
 }
 
-void sort_A_B(t_stack **a, t_stack **b)
-{
-	int	remaining_elements;
-
-	remaining_elements = stack_length(*a);
-	if (stack_sorted(*a))
-		return;
-	if (remaining_elements > 3)
-	{
-		pb(b, a, false);
-		remaining_elements--;
-	}
-	if (remaining_elements > 3 && !stack_sorted(*a))
-	{
-		pb(b, a, false);
-		remaining_elements--;
-	}
-    // Push elements from A to B until only 3 remain in A
-	while (remaining_elements > 3 && !stack_sorted(*a)) {
-		init_nodes_a(*a, *b);  // Prepare nodes for moving
-		remaining_elements--;
-    }
-    // Move prepared elements from A to B
-    move_a_to_b(a, b);
-    // Sort the remaining three elements in stack A
-    sort_the_three(a);
-    // Move all elements from B back to A in sorted order
-    while (*b) {
-        init_nodes_b(*a, *b);  // Prepare nodes for moving
-        move_b_to_a(a, b);
-    }
-    // Finalize the stack
-    current_index(*a);  // Update indices after sorting
-    min_on_top(a);      // Rotate stack A to put minimum value on top
-}
-
-// void	sort_A_B(t_stack **a, t_stack **b)
+// void sort_A_B(t_stack **a, t_stack **b)
 // {
-// 	int	len_a; //To store the length of stack `a`
+// 	int	remaining_elements;
 
-// 	len_a = stack_length(*a);
-// 	if (len_a-- > 3 && !stack_sorted(*a))
-// 		pb(b, a, false);
-// 	if (len_a-- > 3 && !stack_sorted(*a))
-// 		pb(b, a, false);
+// 	remaining_elements = stack_length(*a);
+// 	if (stack_sorted(*a))
+// 		return;
+// 	if (remaining_elements > 3)
 // 	{
-// 		while (len_a-- > 3 && !stack_sorted(*a))
-// 			init_nodes_a(*a, *b);
-// 		move_a_to_b(a, b);
+// 		pb(b, a, false);
+// 		remaining_elements--;
 // 	}
-// 	sort_the_three(a);
-// 	while (*b)
+// 	if (remaining_elements > 3 && !stack_sorted(*a))
 // 	{
-// 		init_nodes_b(*a, *b);
-// 		move_b_to_a(a, b);
+// 		pb(b, a, false);
+// 		remaining_elements--;
 // 	}
-// 	current_index(*a);
-// 	min_on_top(a);
+//     // Push elements from A to B until only 3 remain in A
+// 	while (remaining_elements > 3 && !stack_sorted(*a)) {
+// 		init_nodes_a(*a, *b);  // Prepare nodes for moving
+// 		remaining_elements--;
+//     }
+//     // Move prepared elements from A to B
+//     move_a_to_b(a, b);
+//     // Sort the remaining three elements in stack A
+//     sort_the_three(a);
+//     // Move all elements from B back to A in sorted order
+//     while (*b) {
+//         init_nodes_b(*a, *b);  // Prepare nodes for moving
+//         move_b_to_a(a, b);
+//     }
+//     // Finalize the stack
+//     current_index(*a);  // Update indices after sorting
+//     min_on_top(a);      // Rotate stack A to put minimum value on top
 // }
+
+void	sort_A_B(t_stack **a, t_stack **b)
+{
+	int	len_a; //To store the length of stack `a`
+
+	len_a = stack_length(*a);
+	if (len_a-- > 3 && !stack_sorted(*a))
+		pb(b, a, false);
+	if (len_a-- > 3 && !stack_sorted(*a))
+		pb(b, a, false);
+	while (len_a-- > 3 && !stack_sorted(*a))
+	{
+		init_nodes_a(*a, *b);
+		move_a_to_b(a, b);
+	}
+	sort_the_three(a);
+	while (*b)
+	{
+		init_nodes_b(*a, *b);
+		move_b_to_a(a, b);
+	}
+	current_index(*a);
+	min_on_top(a);
+}
 
 void	prep_for_push(t_stack **stack, t_stack *top_node, char stack_name)
 {

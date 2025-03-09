@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:49:07 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/09 08:37:55 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/09 12:11:14 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static void	push(t_stack **dst, t_stack **src)
 	{
 		push_node->next = *dst;
 		push_node->next->prev = push_node;
+		*dst = push_node;
 	}
 }
 
