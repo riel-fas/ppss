@@ -1,11 +1,10 @@
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra 
+CFLAGS = -Wall -Werror -Wextra
 
 SRCS =	string_pars.c \
 		stack_utils_1.c \
 		stack_utils_2.c \
-		split_utils.c \
 		push_swap.c \
 		populate_a.c \
 		operations_1.c \

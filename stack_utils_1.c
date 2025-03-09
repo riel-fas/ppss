@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 13:16:01 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/09 08:53:49 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/09 10:13:41 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ t_stack	*find_min(t_stack *stack)
 
 t_stack	*find_max(t_stack *stack)
 {
-	long			max; //To store the biggest value so far
-	t_stack	*max_node; //To store a pointer that points to the biggest number
+	long			max;
+	t_stack	*max_node;
 
 	if (!stack)
 		return (NULL);
@@ -81,8 +81,8 @@ t_stack	*find_max(t_stack *stack)
 	{
 		if (stack->nbr > max)
 		{
-			max = stack->nbr; //update the biggest number so far
-			max_node = stack; //Set the pointer to point to the node with the biggest number so far
+			max = stack->nbr;
+			max_node = stack; 
 		}
 		stack = stack->next;
 	}
