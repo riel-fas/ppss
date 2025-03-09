@@ -6,7 +6,7 @@
 /*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:10:05 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/09 14:16:13 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/09 16:32:13 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,9 @@ void		init_nodes_b(t_stack *a, t_stack *b);
 void		prep_for_push(t_stack **stack, t_stack *top_node, char stack_name);
 
 // Input parsing
-char		**split(char *s, char c);
-long		atoi_v2(const char *av);
+//
+char **split_v2(char *s, char c);
+long		atoi_v2(`char *av);
 
 
 

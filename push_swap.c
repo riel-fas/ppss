@@ -6,7 +6,7 @@
 /*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:10:00 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/09 14:31:45 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/09 16:18:24 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 //         }
 //         printf("\n");
 // }
+	// printf("Initial stack A:\n");
+    // print_stack(a, "A");
 
 int main(int argc, char **argv)
 {
@@ -29,12 +31,13 @@ int main(int argc, char **argv)
 	t_stack *b = NULL;
 
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
-	return 1;
+		return 1;
 	if (argc == 2)
-		argv = ft_split(argv[1], 32);
+	{
+		// argv = ft_split(argv[1], 32);
+		argv = split_v2(argv[1], 32);
+	}
 	populate_stack_a(&a, argv + 1);
-	// printf("Initial stack A:\n");
-    // print_stack(a, "A");
 
 	if (!stack_sorted(a))
 	{
@@ -43,15 +46,9 @@ int main(int argc, char **argv)
 		else if (stack_length(a) == 3)
 			sort_the_three(&a);
 		else
-		{
 			sort_A_B(&a, &b);
-			// printf("Initial stack A:\n");
-		    // print_stack(a, "A");
-
-		}
 	}
 	free_stack(&a);
-    // free_stack(&b);
 	return 0;
 }
 
