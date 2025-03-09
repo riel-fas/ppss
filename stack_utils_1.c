@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 13:16:01 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/09 10:13:41 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/09 22:00:49 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 int	stack_length(t_stack *stack)
 {
-	int	count;
+	int	x;
 
-	count = 0;
+	x = 0;
 	if (!stack)
 		return (0);
 	while (stack)
 	{
 		stack = stack->next;
-		count++;
+		x++;
 	}
-	return (count);
+	return (x);
 }
 
-t_stack	*find_last(t_stack *stack)
+t_stack	*find_last_node(t_stack *stack)
 {
 	if (!stack)
 		return (NULL);
@@ -49,10 +49,10 @@ bool	stack_sorted(t_stack *stack)
 	return (true);
 }
 
-t_stack	*find_min(t_stack *stack)
+t_stack	*find_min_nb(t_stack *stack)
 {
 	long	min;
-	t_stack	*min_node;
+	t_stack	*min_nb;
 
 	if (!stack)
 		return (NULL);
@@ -62,17 +62,17 @@ t_stack	*find_min(t_stack *stack)
 		if (stack->nbr < min)
 		{
 			min = stack->nbr;
-			min_node = stack;
+			min_nb = stack;
 		}
 		stack = stack->next;
 	}
-	return (min_node);
+	return (min_nb);
 }
 
-t_stack	*find_max(t_stack *stack)
+t_stack	*find_max_nb(t_stack *stack)
 {
-	long			max;
-	t_stack	*max_node;
+	long	max;
+	t_stack	*max_nb;
 
 	if (!stack)
 		return (NULL);
@@ -82,9 +82,9 @@ t_stack	*find_max(t_stack *stack)
 		if (stack->nbr > max)
 		{
 			max = stack->nbr;
-			max_node = stack; 
+			max_nb = stack;
 		}
 		stack = stack->next;
 	}
-	return (max_node);
+	return (max_nb);
 }

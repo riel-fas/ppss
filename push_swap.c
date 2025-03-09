@@ -3,52 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:10:00 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/09 16:18:24 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/09 23:42:26 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-// static void print_stack(t_stack *stack, const char *name)
-// {
-//         printf("%s: ", name);
-//         while (stack) {
-//                 printf("%d ", stack->nbr);
-//                 stack = stack->next;
-//         }
-//         printf("\n");
-// }
-	// printf("Initial stack A:\n");
-    // print_stack(a, "A");
-
-int main(int argc, char **argv)
+static void	handle_arguments(int ac, char **av, t_stack **a)
 {
-	t_stack *a = NULL;
-	t_stack *b = NULL;
+	char	**split_args;
 
-	if (argc == 1 || (argc == 2 && !argv[1][0]))
-		return 1;
-	if (argc == 2)
+	if (ac == 2)
 	{
-		// argv = ft_split(argv[1], 32);
-		argv = split_v2(argv[1], 32);
+		split_args = split_v2(av[1], 32);
+		populate_stack_a(a, split_args + 1);
+		free_args(split_args);
 	}
-	populate_stack_a(&a, argv + 1);
-
-	if (!stack_sorted(a))
-	{
-		if (stack_length(a) == 2)
-			sa(&a, false);
-		else if (stack_length(a) == 3)
-			sort_the_three(&a);
-		else
-			sort_A_B(&a, &b);
-	}
-	free_stack(&a);
-	return 0;
+	else
+		populate_stack_a(a, av + 1);
 }
 
+static void	sort_stack(t_stack **a, t_stack **b)
+{
+	if (stack_length(*a) == 2)
+		sa(a, false);
+	else if (stack_length(*a) == 3)
+		sort_the_three(a);
+	else
+		sort_a_b(a, b);
+}
+
+int	main(int ac, char **av)
+{
+	t_stack	*a;
+	t_stack	*b;
+
+	a = NULL;
+	b = NULL;
+	if (ac == 1 || (ac == 2 && !av[1][0]))
+		return (1);
+	handle_arguments(ac, av, &a);
+	if (!stack_sorted(a))
+		sort_stack(&a, &b);
+	free_stack(&a);
+	return (0);
+}

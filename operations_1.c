@@ -6,7 +6,7 @@
 /*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:49:04 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/09 08:37:14 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/09 22:08:20 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	rev_rotate(t_stack **stack)
 
 	if (!*stack || !(*stack)->next)
 		return ;
-	last = find_last(*stack);
+	last = find_last_node(*stack);
 	last->prev->next = NULL;
 	last->next = *stack;
 	last->prev = NULL;

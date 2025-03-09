@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_func_3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 16:42:35 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/09 10:06:51 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/09 23:15:09 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	set_target_a(t_stack *a, t_stack *b)
 {
 	t_stack	*current_b;
 	t_stack	*target_node;
-	long			best_match_index;
+	long	best_match_index;
 
 	while (a)
 	{
@@ -53,21 +53,21 @@ static void	set_target_a(t_stack *a, t_stack *b)
 			current_b = current_b->next;
 		}
 		if (best_match_index == LONG_MIN)
-			a->target_node = find_max(b);
+			a->target_node = find_max_nb(b);
 		else
 			a->target_node = target_node;
 		a = a->next;
 	}
 }
 
-static void	cost_analysis_a(t_stack *a, t_stack *b)
+static void	cost_calc_a(t_stack *a, t_stack *b)
 {
 	int	len_a;
 	int	len_b;
 
 	len_a = stack_length(a);
 	len_b = stack_length(b);
-	while (a) //Loop through each node until the end of the stack is reached
+	while (a)
 	{
 		a->push_cost = a->index;
 		if (!(a->above_median))
@@ -82,7 +82,7 @@ static void	cost_analysis_a(t_stack *a, t_stack *b)
 
 void	set_cheapest(t_stack *stack)
 {
-	long			cheapest_value;
+	long	cheapest_value;
 	t_stack	*cheapest_node;
 
 	if (!stack)
@@ -105,6 +105,6 @@ void	init_nodes_a(t_stack *a, t_stack *b)
 	current_index(a);
 	current_index(b);
 	set_target_a(a, b);
-	cost_analysis_a(a, b);
+	cost_calc_a(a, b);
 	set_cheapest(a);
 }

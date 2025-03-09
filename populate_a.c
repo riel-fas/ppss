@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   populate_a.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 12:53:15 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/09 13:55:23 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/09 23:13:56 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void send_nodes_to_a(t_stack **stack, int n)
+static void	send_nodes_to_a(t_stack **stack, int n)
 {
-	t_stack	*node; //To store a pointer to the new node to be created with the value `n`
-	t_stack	*last_node; //To store a pointer to the current last node of the stack
+	t_stack	*node;
+	t_stack	*last_node;
 
 	if (!stack)
 		return ;
@@ -32,38 +32,26 @@ static void send_nodes_to_a(t_stack **stack, int n)
 	}
 	else
 	{
-		last_node = find_last(*stack); //In which case, find the last node
-		last_node->next = node; //Append the new node to the last node
-		node->prev = last_node; //Update the previous pointer of the new node and complete the appending
+		last_node = find_last_node(*stack);
+		last_node->next = node;
+		node->prev = last_node;
 	}
-}
-
-t_stack	*get_cheapest(t_stack *stack)
-{
-	if (!stack)
-		return (NULL);
-	while (stack)
-	{
-		if (stack->cheap)
-			return (stack);
-		stack = stack->next;
-	}
-	return (NULL);
 }
 
 void	populate_stack_a(t_stack **a, char **av)
 {
-	long n;
-	int i = 0;
+	long	n;
+	int		x;
 
-	while (av[i])
+	x = 0;
+	while (av[x])
 	{
-		if (error_synt(av[i]))
+		if (error_synt(av[x]))
 		{
 			free_stack(a);
 			errors();
 		}
-		n = atoi_v2(av[i]);
+		n = atoi_v2(av[x]);
 		if (n > INT_MAX || n < INT_MIN)
 		{
 			free_stack(a);
@@ -74,7 +62,7 @@ void	populate_stack_a(t_stack **a, char **av)
 			free_stack(a);
 			errors();
 		}
-		send_nodes_to_a(a, (int)n);//from long to int
-		i++;
+		send_nodes_to_a(a, (int)n);
+		x++;
 	}
 }

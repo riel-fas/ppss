@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 13:45:57 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/09 12:35:24 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/09 23:12:45 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int	error_synt(char *str_n)
 {
 	if (!(*str_n == '+' || *str_n == '-' || (*str_n >= '0' && *str_n <= '9')))
 		return (1);
-	if ((*str_n == '+' || *str_n == '-') && !(str_n[1] >= '0' && str_n[1] <= '9'))
+	if ((*str_n == '+' || *str_n == '-')
+		&& !(str_n[1] >= '0' && str_n[1] <= '9'))
 		return (1);
 	while (*++str_n)
 	{
@@ -26,24 +27,23 @@ int	error_synt(char *str_n)
 	return (0);
 }
 
-
 int	error_dups(t_stack *a, int n)
 {
 	if (!a)
-		return 0;
+		return (0);
 	while (a)
 	{
 		if (a->nbr == n)
-			return 1;
+			return (1);
 		a = a->next;
 	}
-	return 0;
+	return (0);
 }
 
 void	free_stack(t_stack **stack)
 {
-	t_stack *tmp;
-	t_stack *current;
+	t_stack	*tmp;
+	t_stack	*current;
 
 	current = *stack;
 	while (current)
