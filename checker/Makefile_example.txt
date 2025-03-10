@@ -1,0 +1,39 @@
+NAME = checker
+
+CC = cc
+
+CFLAGS = -Wall -Werror -Wextra
+
+SRC =  	checker.c \
+		error_handling_bonus.c \
+		operations_1_bonus.c \
+		operations_2_bonus.c \
+		operations_3_bonus.c \
+		operations_4_bonus.c \
+		populate_a_bonus.c \
+		stack_utils_1_bonus.c \
+		stack_utils_2_bonus.c \
+		string_pars_bonus.c
+
+
+OBJS = $(SRC:.c=.o)
+
+HEADER = checker.h
+
+all: ${NAME}
+
+$(NAME): $(OBJS)
+		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+
+%.o: %.c $(HEADER)
+		$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+		rm -rf $(OBJS)
+
+fclean: clean
+		rm -rf $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
