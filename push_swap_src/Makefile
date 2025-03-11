@@ -30,9 +30,7 @@ BONUS_SRC = ../checker/checker.c \
 			../checker/operations_4_bonus.c \
 			../checker/populate_a_bonus.c \
 			../checker/stack_utils_1_bonus.c \
-			../checker/stack_utils_2_bonus.c \
 			../checker/string_pars_bonus.c \
-			../checker/checker_moves.c \
 			../libft/get_next_line/get_next_line.c
 
 LIBFT = ../libft/libft.a
