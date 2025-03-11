@@ -6,7 +6,7 @@
 /*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 06:11:34 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/10 14:16:06 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/11 09:30:50 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,18 @@ static void	swap(t_stack_bonus **head)
 	(*head)->prev = NULL;
 }
 
-void	sa_b(t_stack_bonus	**a, bool write_mv)
+void	sa(t_stack_bonus	**a)
 {
 	swap(a);
-	if (!write_mv)
-		write(1, "sa\n", 3);
 }
 
-void	sb_b(t_stack_bonus **b, bool write_mv)
+void	sb(t_stack_bonus **b)
 {
 	swap(b);
-	if (!write_mv)
-		write(1, "sb\n", 3);
 }
 
-void	ss_b(t_stack_bonus **a, t_stack_bonus **b, bool write_mv)
+void	ss(t_stack_bonus **a, t_stack_bonus **b)
 {
 	swap(a);
 	swap(b);
-	if (!write_mv)
-		write(1, "ss\n", 3);
 }

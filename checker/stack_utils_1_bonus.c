@@ -6,7 +6,7 @@
 /*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 14:54:17 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/10 15:03:24 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/11 11:17:53 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,44 +48,3 @@ bool	stack_sorted(t_stack_bonus *stack)
 	}
 	return (true);
 }
-
-t_stack_bonus	*find_min_nb(t_stack_bonus *stack)
-{
-	long	min;
-	t_stack_bonus	*min_nb;
-
-	if (!stack)
-		return (NULL);
-	min = LONG_MAX;
-	while (stack)
-	{
-		if (stack->nbr < min)
-		{
-			min = stack->nbr;
-			min_nb = stack;
-		}
-		stack = stack->next;
-	}
-	return (min_nb);
-}
-
-t_stack_bonus	*find_max_nb(t_stack_bonus *stack)
-{
-	long	max;
-	t_stack_bonus	*max_nb;
-
-	if (!stack)
-		return (NULL);
-	max = LONG_MIN;
-	while (stack)
-	{
-		if (stack->nbr > max)
-		{
-			max = stack->nbr;
-			max_nb = stack;
-		}
-		stack = stack->next;
-	}
-	return (max_nb);
-}
-

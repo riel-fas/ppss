@@ -6,7 +6,7 @@
 /*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 06:08:45 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/10 14:15:16 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/11 09:30:37 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,18 @@ static void	rotate(t_stack_bonus **stack)
 	last_node->next->next = NULL;
 }
 
-void	ra_b(t_stack_bonus **a, bool write_mv)
+void	ra(t_stack_bonus **a)
 {
 	rotate(a);
-	if (!write_mv)
-		write(1, "ra\n", 3);
 }
 
-void	rb_b(t_stack_bonus **b, bool write_mv)
+void	rb(t_stack_bonus **b)
 {
 	rotate(b);
-	if (!write_mv)
-		write(1, "rb\n", 3);
 }
 
-void	rr_b(t_stack_bonus **a, t_stack_bonus **b, bool write_mv)
+void	rr(t_stack_bonus **a, t_stack_bonus **b)
 {
 	rotate(a);
 	rotate(b);
-	if (!write_mv)
-		write(1, "rr\n", 3);
 }

@@ -20,7 +20,7 @@ SRCS =	string_pars.c \
 		algo_func_2.c \
 		algo_func_3.c \
 		algo_func_4.c \
-		algo_func_5.c
+		algo_func_5.c \
 
 BONUS_SRC = ../checker/checker.c \
 			../checker/error_handling_bonus.c \
@@ -31,8 +31,11 @@ BONUS_SRC = ../checker/checker.c \
 			../checker/populate_a_bonus.c \
 			../checker/stack_utils_1_bonus.c \
 			../checker/stack_utils_2_bonus.c \
-			../checker/string_pars_bonus.c
+			../checker/string_pars_bonus.c \
+			../checker/checker_moves.c \
+			../libft/get_next_line/get_next_line.c
 
+LIBFT = ../libft/libft.a
 
 OBJS = $(SRCS:.c=.o)
 
@@ -50,17 +53,22 @@ bonus: ${BONUS}
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-$(BONUS): $(BONUS_OBJ)
-	$(CC) $(CFLAGS) $(BONUS_OBJ) -o $(BONUS)
+$(BONUS): $(BONUS_OBJ) $(LIBFT)
+	$(CC) $(CFLAGS) $(BONUS_OBJ) $(LIBFT) -o $(BONUS)
+
+$(LIBFT):
+	make -C ../libft
 
 %.o: %.c $(HEADER) $(HEADER_BONUS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJS) $(BONUS_OBJ)
+	make clean -C ../libft
 
 fclean: clean
 	rm -rf $(NAME) $(BONUS)
+	make fclean -C ../libft
 
 re: fclean all
 

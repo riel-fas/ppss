@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 13:56:18 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/11 08:37:39 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/11 11:52:40 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <stdbool.h>
 #include <limits.h>
 #include <stdlib.h>
-#include "../get_next_line/get_next_line.h"
+#include "../libft/get_next_line/get_next_line.h"
 
 typedef	struct s_stack_bonus
 {
@@ -29,27 +29,27 @@ typedef	struct s_stack_bonus
 
 }		t_stack_bonus;
 
-void			rra_b(t_stack_bonus **a, bool write_mv);
-void			rrb_b(t_stack_bonus **b, bool write_mv);
-void			rrr_b(t_stack_bonus **a, t_stack_bonus **b, bool write_mv);
+void			rra(t_stack_bonus **a);
+void			rrb(t_stack_bonus **b);
+void			rrr(t_stack_bonus **a, t_stack_bonus **b);
 
-void			pa_b(t_stack_bonus **a, t_stack_bonus **b, bool write_mv);
-void			pb_b(t_stack_bonus **b, t_stack_bonus **a, bool write_mv);
+void			pa(t_stack_bonus **a, t_stack_bonus **b);
+void			pb(t_stack_bonus **b, t_stack_bonus **a);
 
-void			ra_b(t_stack_bonus **a, bool write_mv);
-void			rb_b(t_stack_bonus **b, bool write_mv);
-void			rr_b(t_stack_bonus **a, t_stack_bonus **b, bool write_mv);
+void			ra(t_stack_bonus **a);
+void			rb(t_stack_bonus **b);
+void			rr(t_stack_bonus **a, t_stack_bonus **b);
 
-void			sa_b(t_stack_bonus	**a, bool write_mv);
-void			sb_b(t_stack_bonus **b, bool write_mv);
-void			ss_b(t_stack_bonus **a, t_stack_bonus **b, bool write_mv);
+void			sa(t_stack_bonus	**a);
+void			sb(t_stack_bonus **b);
+void			ss(t_stack_bonus **a, t_stack_bonus **b);
 
 
-int				stack_length(t_stack_bonus *stack);
-t_stack_bonus	*find_last_node(t_stack_bonus *stack);
 bool			stack_sorted(t_stack_bonus *stack);
+t_stack_bonus	*find_last_node(t_stack_bonus *stack);
 t_stack_bonus	*find_min_nb(t_stack_bonus *stack);
 t_stack_bonus	*find_max_nb(t_stack_bonus *stack);
+int				stack_length(t_stack_bonus *stack);
 void			free_args(char **args);
 
 char			**split_v2(char *s, char c);
@@ -62,6 +62,9 @@ int				error_synt(char *str_n);
 
 
 void			populate_stack_a(t_stack_bonus **a, char **av);
+
+void			oper_check(t_stack_bonus **a, t_stack_bonus **b, char *line);
+void			check_moves(t_stack_bonus **a, t_stack_bonus **b, char *line);
 
 
 
