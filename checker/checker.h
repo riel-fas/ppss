@@ -6,7 +6,7 @@
 /*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 13:56:18 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/11 14:29:00 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:01:41 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <limits.h>
 #include <stdlib.h>
 #include "../libft/get_next_line/get_next_line.h"
+#include "../libft/libft.h"
 
 typedef	struct s_stack_bonus
 {
@@ -53,8 +54,13 @@ void			free_stack(t_stack_bonus **stack);
 int				error_dups(t_stack_bonus *a, int n);
 int				error_synt(char *str_n);
 void			populate_stack_a(t_stack_bonus **a, char **av);
-void	check_moves(t_stack_bonus **a, t_stack_bonus **b, char *line);
-void    check_reverse_rotations(t_stack_bonus **a, t_stack_bonus **b, char *line);
+void			check_moves(t_stack_bonus **a, t_stack_bonus **b, char *line);
+void			check_reverse_rotations(t_stack_bonus **a, t_stack_bonus **b, char *line);
+void			check_swap(t_stack_bonus **a, t_stack_bonus **b, char *line);
+void			check_rotate(t_stack_bonus **a, t_stack_bonus **b, char *line);
+void 			check_reverse_rotate(t_stack_bonus **a, t_stack_bonus **b, char *line);
+void 			move_errors(void);
+void	check_push(t_stack_bonus **a, t_stack_bonus **b, char *line);
 
 
 

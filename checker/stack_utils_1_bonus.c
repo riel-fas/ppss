@@ -6,7 +6,7 @@
 /*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 14:54:17 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/11 14:31:01 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/11 15:23:10 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_stack_bonus	*find_last_node(t_stack_bonus *stack)
 		stack = stack->next;
 	return (stack);
 }
-
+#include <stdio.h>
 bool	stack_sorted(t_stack_bonus *stack)
 {
 	if (!stack)
@@ -43,7 +43,10 @@ bool	stack_sorted(t_stack_bonus *stack)
 	while (stack->next)
 	{
 		if (stack->nbr > stack->next->nbr)
+		{
+			printf("nbr: %d, nbr_next: %d\n", stack->nbr, stack->next->nbr);
 			return (false);
+		}
 		stack = stack->next;
 	}
 	return (true);
