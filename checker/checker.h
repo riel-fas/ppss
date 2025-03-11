@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 13:56:18 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/10 16:07:37 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/11 08:37:39 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <stdbool.h>
 #include <limits.h>
 #include <stdlib.h>
+#include "../get_next_line/get_next_line.h"
 
 typedef	struct s_stack_bonus
 {
