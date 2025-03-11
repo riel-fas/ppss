@@ -3,25 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 13:56:18 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/11 16:01:41 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/11 18:29:28 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
 
+# include <unistd.h>
+# include <stdbool.h>
+# include <limits.h>
+# include <stdlib.h>
+# include "../libft/get_next_line/get_next_line.h"
 
-#include <unistd.h>
-#include <stdbool.h>
-#include <limits.h>
-#include <stdlib.h>
-#include "../libft/get_next_line/get_next_line.h"
-#include "../libft/libft.h"
-
-typedef	struct s_stack_bonus
+typedef struct s_stack_bonus
 {
 	int						nbr;
 	struct s_stack_bonus	*prev;
@@ -41,10 +39,9 @@ void			rr(t_stack_bonus **a, t_stack_bonus **b);
 void			sa(t_stack_bonus	**a);
 void			sb(t_stack_bonus **b);
 void			ss(t_stack_bonus **a, t_stack_bonus **b);
+int				ft_strcmp(char *s1, char *s2);
 bool			stack_sorted(t_stack_bonus *stack);
 t_stack_bonus	*find_last_node(t_stack_bonus *stack);
-t_stack_bonus	*find_min_nb(t_stack_bonus *stack);
-t_stack_bonus	*find_max_nb(t_stack_bonus *stack);
 int				stack_length(t_stack_bonus *stack);
 void			free_args(char **args);
 char			**split_v2(char *s, char c);
@@ -55,13 +52,5 @@ int				error_dups(t_stack_bonus *a, int n);
 int				error_synt(char *str_n);
 void			populate_stack_a(t_stack_bonus **a, char **av);
 void			check_moves(t_stack_bonus **a, t_stack_bonus **b, char *line);
-void			check_reverse_rotations(t_stack_bonus **a, t_stack_bonus **b, char *line);
-void			check_swap(t_stack_bonus **a, t_stack_bonus **b, char *line);
-void			check_rotate(t_stack_bonus **a, t_stack_bonus **b, char *line);
-void 			check_reverse_rotate(t_stack_bonus **a, t_stack_bonus **b, char *line);
-void 			move_errors(void);
-void	check_push(t_stack_bonus **a, t_stack_bonus **b, char *line);
-
-
 
 #endif
