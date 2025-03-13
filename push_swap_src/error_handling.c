@@ -6,26 +6,42 @@
 /*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 13:45:57 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/09 23:12:45 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/13 09:06:39 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	error_synt(char *str_n)
+// int	error_synt(char *str_n)
+// {
+// 	if (!(*str_n == '+' || *str_n == '-' || (*str_n >= '0' && *str_n <= '9')))
+// 		return (1);
+// 	if ((*str_n == '+' || *str_n == '-')
+// 		&& !(str_n[1] >= '0' && str_n[1] <= '9'))
+// 		return (1);
+// 	while (*++str_n)
+// 	{
+// 		if (!(*str_n >= '0' && *str_n <= '9'))
+// 			return (1);
+// 	}
+// 	return (0);
+// }
+
+
+int error_synt(char *str_n)
 {
-	if (!(*str_n == '+' || *str_n == '-' || (*str_n >= '0' && *str_n <= '9')))
-		return (1);
-	if ((*str_n == '+' || *str_n == '-')
-		&& !(str_n[1] >= '0' && str_n[1] <= '9'))
-		return (1);
-	while (*++str_n)
-	{
-		if (!(*str_n >= '0' && *str_n <= '9'))
-			return (1);
-	}
-	return (0);
+    if (!(*str_n == '+' || *str_n == '-' || (*str_n >= '0' && *str_n <= '9')))
+        return 1;
+    if ((*str_n == '+' || *str_n == '-') && !(str_n[1] >= '0' && str_n[1] <= '9'))
+        return 1;
+    while (*++str_n)
+    {
+        if (!(*str_n >= '0' && *str_n <= '9'))
+            return 1;
+    }
+    return 0;
 }
+
 
 int	error_dups(t_stack *a, int n)
 {
