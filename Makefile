@@ -25,6 +25,7 @@ SRCS =	push_swap_src/string_pars.c \
 		libft/ft_strlcpy.c
 
 BONUS_SRC = checker_src/checker.c \
+			checker_src/checker_utils.c \
 			checker_src/error_handling_bonus.c \
 			checker_src/operations_1_bonus.c \
 			checker_src/operations_2_bonus.c \
@@ -33,6 +34,7 @@ BONUS_SRC = checker_src/checker.c \
 			checker_src/populate_a_bonus.c \
 			checker_src/stack_utils_1_bonus.c \
 			checker_src/string_pars_bonus.c \
+			checker_src/string_pars_utils_bonus.c\
 			libft/get_next_line/get_next_line.c
 
 LIBFT = libft/libft.a

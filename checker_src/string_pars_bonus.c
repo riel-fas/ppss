@@ -3,38 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   string_pars_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 15:06:08 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/13 16:39:35 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/13 18:11:51 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
-static int	skip_whitespace_and_sign(char *s, int *sign)
-{
-	int	x;
-
-	x = 0;
-	while ((s[x] >= 9 && s[x] <= 13) || s[x] == 32)
-		x++;
-	if (s[x] == '-' || s[x] == '+')
-	{
-		if (s[x] == '-')
-			*sign = -1;
-		x++;
-	}
-	return (x);
-}
-
-static long	handle_overflow(int sign)
-{
-	if (sign == 1)
-		return (LONG_MAX);
-	else
-		return (LONG_MIN);
-}
 
 long	atoi_v2(char *s)
 {
@@ -72,6 +48,7 @@ char	*allocate_word(char *s, char c, int *i)
 		ft_strlcpy(word, &s[start], len + 1);
 	return (word);
 }
+
 int	count_words(char *s, char c)
 {
 	int	count;
@@ -122,14 +99,4 @@ char	**split_v2(char *s, char c)
 	}
 	result[w] = NULL;
 	return (result);
-}
-
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;
-
-	i = 0;
-	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
-		i++;
-	return (s1[i] - s2[i]);
 }
