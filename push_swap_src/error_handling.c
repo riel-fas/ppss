@@ -3,45 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 13:45:57 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/13 09:06:39 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/13 15:22:37 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// int	error_synt(char *str_n)
-// {
-// 	if (!(*str_n == '+' || *str_n == '-' || (*str_n >= '0' && *str_n <= '9')))
-// 		return (1);
-// 	if ((*str_n == '+' || *str_n == '-')
-// 		&& !(str_n[1] >= '0' && str_n[1] <= '9'))
-// 		return (1);
-// 	while (*++str_n)
-// 	{
-// 		if (!(*str_n >= '0' && *str_n <= '9'))
-// 			return (1);
-// 	}
-// 	return (0);
-// }
-
-
-int error_synt(char *str_n)
+int	error_synt(char *str)
 {
-    if (!(*str_n == '+' || *str_n == '-' || (*str_n >= '0' && *str_n <= '9')))
-        return 1;
-    if ((*str_n == '+' || *str_n == '-') && !(str_n[1] >= '0' && str_n[1] <= '9'))
-        return 1;
-    while (*++str_n)
-    {
-        if (!(*str_n >= '0' && *str_n <= '9'))
-            return 1;
-    }
-    return 0;
-}
+	int	x;
 
+	x = 0;
+	if (!(str[x] == '+' || str[x] == '-' || (str[x] >= '0' && str[x] <= '9')))
+		return (1);
+	if ((str[x] == '+' || str[x] == '-') && !(str[1] >= '0' && str[1] <= '9'))
+		return (1);
+	x++;
+	while (str[x])
+	{
+		if (!(str[x] >= '0' && str[x] <= '9'))
+			return (1);
+		x++;
+	}
+	return (0);
+}
 
 int	error_dups(t_stack *a, int n)
 {

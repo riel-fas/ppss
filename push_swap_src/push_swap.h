@@ -6,7 +6,7 @@
 /*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:10:05 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/10 14:09:53 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/13 15:43:14 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <unistd.h>
+# include "../libft/libft.h"
 
 // Stack node structure
 typedef struct s_stack
@@ -78,5 +79,7 @@ void		prep_for_push(t_stack **stack, t_stack *top_node, char stack_name);
 // Input parsing
 char		**split_v2(char *s, char c);
 long		atoi_v2(char *av);
+int			count_words(char *s, char c);
+char		*allocate_word(char *s, char c, int *i);
 
 #endif

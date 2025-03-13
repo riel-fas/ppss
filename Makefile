@@ -7,6 +7,7 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
 SRCS =	push_swap_src/string_pars.c \
+		push_swap_src/string_pars_2.c \
 		push_swap_src/stack_utils_1.c \
 		push_swap_src/stack_utils_2.c \
 		push_swap_src/push_swap.c \
@@ -21,6 +22,7 @@ SRCS =	push_swap_src/string_pars.c \
 		push_swap_src/algo_func_3.c \
 		push_swap_src/algo_func_4.c \
 		push_swap_src/algo_func_5.c \
+		libft/ft_strlcpy.c
 
 BONUS_SRC = checker_src/checker.c \
 			checker_src/error_handling_bonus.c \
@@ -48,8 +50,8 @@ all: ${NAME}
 
 bonus: ${BONUS}
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 $(BONUS): $(BONUS_OBJ) $(LIBFT)
 	$(CC) $(CFLAGS) $(BONUS_OBJ) $(LIBFT) -o $(BONUS)
