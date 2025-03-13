@@ -6,7 +6,7 @@
 /*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 13:42:21 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/13 10:35:57 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/13 16:41:56 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,21 +86,87 @@ void	check_moves(t_stack_bonus **a, t_stack_bonus **b, char *line)
 // }
 
 
-
-
-static void	handle_arguments_bonus(int ac, char **av, t_stack_bonus **a)
+static int	calculate_total_length(int ac, char **av)
 {
-	char	**splited;
+	int	total_len;
+	int	i;
+	int	x;
 
-	if (ac == 2)
+	i = 1;
+	x = 0;
+	total_len = 0;
+	while (i < ac)
 	{
-		splited = split_v2(av[1], 32);
-		populate_stack_a(a, splited + 1);
-		free_args(splited);
+		x = 0;
+		while (av[i][x] != '\0')
+		{
+			total_len++;
+			x++;
+		}
+		total_len++;
+		i++;
 	}
-	else
-		populate_stack_a(a, av + 1);
+	return (total_len);
 }
+
+static char	*join_arguments(int ac, char **av, int total_len)
+{
+	char	*joined_args;
+	char	*ptr;
+	int		i;
+	int		x;
+
+	i = 1;
+	joined_args = malloc(total_len * sizeof(char));
+	if (!joined_args)
+		errors();
+	ptr = joined_args;
+	while (i < ac)
+	{
+		x = 0;
+		while (av[i][x] != '\0')
+			*ptr++ = av[i][x++];
+		if (i < ac - 1)
+			*ptr++ = ' ';
+		i++;
+	}
+	*ptr = '\0';
+	return (joined_args);
+}
+
+void	handle_arguments_bonus(int ac, char **av, t_stack_bonus **a)
+{
+	char	*joined_args;
+	char	**split_args;
+	int		total_len;
+
+	if (ac == 1 || (ac == 2 && !av[1][0]))
+		errors();
+	total_len = calculate_total_length(ac, av);
+	joined_args = join_arguments(ac, av, total_len);
+	split_args = split_v2(joined_args, ' ');
+	free(joined_args);
+	if (!split_args || !split_args[0])
+		errors();
+	populate_stack_a(a, split_args);
+	free_args(split_args);
+}
+
+
+
+// static void	handle_arguments_bonus(int ac, char **av, t_stack_bonus **a)
+// {
+// 	char	**splited;
+
+// 	if (ac == 2)
+// 	{
+// 		splited = split_v2(av[1], 32);
+// 		populate_stack_a(a, splited + 1);
+// 		free_args(splited);
+// 	}
+// 	else
+// 		populate_stack_a(a, av + 1);
+// }
 
 int	main(int ac, char **av)
 {
@@ -111,7 +177,7 @@ int	main(int ac, char **av)
 	a = NULL;
 	b = NULL;
 	if (ac == 1 || (ac == 2 && !av[1][0]))
-		return (1);
+		return (0);
 	handle_arguments_bonus(ac, av, &a);
 	line = get_next_line(0);
 	while (line != NULL)

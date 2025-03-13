@@ -6,23 +6,27 @@
 /*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 15:16:42 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/11 14:30:03 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/13 16:34:05 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int	error_synt(char *str_n)
+int	error_synt(char *str)
 {
-	if (!(*str_n == '+' || *str_n == '-' || (*str_n >= '0' && *str_n <= '9')))
+	int	x;
+
+	x = 0;
+	if (!(str[x] == '+' || str[x] == '-' || (str[x] >= '0' && str[x] <= '9')))
 		return (1);
-	if ((*str_n == '+' || *str_n == '-')
-		&& !(str_n[1] >= '0' && str_n[1] <= '9'))
+	if ((str[x] == '+' || str[x] == '-') && !(str[1] >= '0' && str[1] <= '9'))
 		return (1);
-	while (*++str_n)
+	x++;
+	while (str[x])
 	{
-		if (!(*str_n >= '0' && *str_n <= '9'))
+		if (!(str[x] >= '0' && str[x] <= '9'))
 			return (1);
+		x++;
 	}
 	return (0);
 }

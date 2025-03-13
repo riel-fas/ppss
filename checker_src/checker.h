@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 13:56:18 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/11 18:29:28 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/13 16:37:16 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <limits.h>
 # include <stdlib.h>
 # include "../libft/get_next_line/get_next_line.h"
+# include "../libft/libft.h"
 
 typedef struct s_stack_bonus
 {

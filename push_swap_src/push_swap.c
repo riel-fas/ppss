@@ -6,7 +6,7 @@
 /*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:10:00 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/13 15:24:30 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/13 16:24:07 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	main(int ac, char **av)
 	a = NULL;
 	b = NULL;
 	if (ac == 1 || (ac == 2 && !av[1][0]))
-		return (1);
+		return (0);
 	if (ac < 2)
 		return (0);
 	handle_arguments(ac, av, &a);

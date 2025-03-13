@@ -6,7 +6,7 @@
 /*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 15:16:58 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/10 15:17:18 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/13 16:35:16 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	populate_stack_a(t_stack_bonus **a, char **av)
 			errors();
 		}
 		n = atoi_v2(av[x]);
-		if (n > INT_MAX || n < INT_MIN)
+		if (n == LONG_MAX || n == LONG_MIN || n > INT_MAX || n < INT_MIN)
 		{
 			free_stack(a);
 			errors();

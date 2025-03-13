@@ -3,116 +3,125 @@
 /*                                                        :::      ::::::::   */
 /*   string_pars_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: riel-fas <riel-fas@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: riel-fas <riel-fas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 15:06:08 by riel-fas          #+#    #+#             */
-/*   Updated: 2025/03/11 18:28:41 by riel-fas         ###   ########.fr       */
+/*   Updated: 2025/03/13 16:39:35 by riel-fas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+static int	skip_whitespace_and_sign(char *s, int *sign)
+{
+	int	x;
+
+	x = 0;
+	while ((s[x] >= 9 && s[x] <= 13) || s[x] == 32)
+		x++;
+	if (s[x] == '-' || s[x] == '+')
+	{
+		if (s[x] == '-')
+			*sign = -1;
+		x++;
+	}
+	return (x);
+}
+
+static long	handle_overflow(int sign)
+{
+	if (sign == 1)
+		return (LONG_MAX);
+	else
+		return (LONG_MIN);
+}
 
 long	atoi_v2(char *s)
 {
 	int		x;
 	long	result;
 	int		sign;
+	long	prev_result;
 
-	x = 0;
-	result = 0;
 	sign = 1;
-	while (s[x] == ' ' || s[x] == '\t' || s[x] == '\n'
-		|| s[x] == '\r' || s[x] == '\f' || s[x] == '\v')
-		x++;
-	if (s[x] == '-' || s[x] == '+')
+	x = skip_whitespace_and_sign(s, &sign);
+	result = 0;
+	while (s[x] >= '0' && s[x] <= '9')
 	{
-		if (s[x] == '-')
-			sign = -1;
-		x++;
-	}
-	while (s[x] >= 48 && s[x] <= 57)
-	{
+		prev_result = result;
 		result = result * 10 + (s[x] - '0');
+		if (result / 10 != prev_result)
+			return (handle_overflow(sign));
 		x++;
 	}
 	return (result * sign);
 }
 
-static int	count_words(char *s, char c)
+char	*allocate_word(char *s, char c, int *i)
 {
-	int	x;
+	int		start;
+	int		len;
+	char	*word;
+
+	start = *i;
+	while (s[*i] && s[*i] != c)
+		(*i)++;
+	len = *i - start;
+	word = malloc((len + 1) * sizeof(char));
+	if (word)
+		ft_strlcpy(word, &s[start], len + 1);
+	return (word);
+}
+int	count_words(char *s, char c)
+{
 	int	count;
 	int	inside_word;
+	int	i;
 
-	x = 0;
 	count = 0;
-	while (s[x])
+	inside_word = 0;
+	i = 0;
+	while (s[i])
 	{
-		inside_word = 0;
-		while (s[x] == c)
-			++x;
-		while (s[x] != c && s[x])
+		if (s[i] != c && !inside_word)
 		{
-			if (!inside_word)
-			{
-				++count;
-				inside_word = 1;
-			}
-			++x;
+			inside_word = 1;
+			count++;
 		}
+		else if (s[i] == c)
+			inside_word = 0;
+		i++;
 	}
 	return (count);
 }
 
-static char	*get_next_word(char *s, char c)
-{
-	static int	cursor = 0;
-	char		*next_word;
-	int			len;
-	int			x;
-
-	len = 0;
-	x = 0;
-	while (s[cursor] == c)
-		++cursor;
-	while ((s[cursor + len] != c) && s[cursor + len])
-		++len;
-	next_word = malloc((size_t)len * sizeof(char) + 1);
-	if (!next_word)
-		return (NULL);
-	while ((s[cursor] != c) && s[cursor])
-		next_word[x++] = s[cursor++];
-	next_word[x] = '\0';
-	return (next_word);
-}
-
 char	**split_v2(char *s, char c)
 {
-	int		x;
-	int		words_count;
-	char	**result_array;
+	char	**result;
+	int		words;
+	int		i;
+	int		w;
 
-	x = 0;
-	words_count = count_words(s, c);
-	if (!words_count)
-		exit(1);
-	result_array = malloc(sizeof(char *) * (size_t)(words_count + 2));
-	if (!result_array)
+	words = count_words(s, c);
+	result = malloc(sizeof(char *) * (words + 1));
+	if (!result)
 		return (NULL);
-	while (words_count-- >= 0)
+	i = 0;
+	w = 0;
+	while (s[i])
 	{
-		if (x == 0)
+		while (s[i] == c)
+			i++;
+		if (s[i])
 		{
-			result_array[x] = malloc(sizeof(char));
-			if (!result_array[x])
+			result[w] = allocate_word(s, c, &i);
+			if (!result[w])
 				return (NULL);
-			result_array[x++][0] = '\0';
-			continue ;
+			w++;
 		}
-		result_array[x++] = get_next_word(s, c);
 	}
-	result_array[x] = NULL;
-	return (result_array);
+	result[w] = NULL;
+	return (result);
 }
 
 int	ft_strcmp(char *s1, char *s2)
