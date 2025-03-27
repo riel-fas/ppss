@@ -154,11 +154,3 @@ make
 - Handling various input scenarios
 - Optimizing stack manipulations
 
-## Lessons Learned
-- Advanced data structure manipulation
-- Algorithm optimization techniques
-- Importance of modular code design
-- Complex problem-solving strategies
-
-## Author
-- 42 School Student: riel-fas
